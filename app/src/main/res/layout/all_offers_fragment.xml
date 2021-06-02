@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <com.google.android.material.appbar.MaterialToolbar
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        android:background="@color/white"
+        app:navigationIcon="@drawable/ic_baseline_arrow_back_white"
+        android:id="@+id/toolbar"
+        app:title="All Offers"
+        android:elevation="10dp"
+        android:fadingEdgeLength="5dp"
+        app:navigationIconTint="@color/black"
+        />
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="10dp"
+        android:layout_below="@+id/toolbar"
+        android:id="@+id/listView"/>
+
+</RelativeLayout>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+        <item
+            android:id="@+id/nav_add_offers"
+            android:icon="@drawable/ic_baseline_local_offer_24"
+            android:title="@string/add_offer"
+            app:iconTint="@color/black" />
+        <item
+            android:id="@+id/nav_delete_offer"
+            android:icon="@drawable/ic_baseline_auto_delete_24"
+            android:title="@string/remove_offer" />
+        <item
+            android:id="@+id/nav_add_drinks"
+            android:icon="@drawable/ic_baseline_post_add_24"
+            android:title="@string/add_drinks" />
+    <item
+        android:id="@+id/nav_remove_drinks"
+        android:icon="@drawable/ic_baseline_delete_outline_24"
+        android:title="@string/remove_drinks" />
+    <item
+        android:id="@+id/nav_messages"
+        android:icon="@drawable/ic_baseline_chat_24"
+        android:title="@string/view_and_send_a_message" />
+    <item
+        android:id="@+id/cashbacks"
+        android:icon="@drawable/ic_baseline_mobile_screen_share_24"
+        android:title="@string/cashbacks"/>
+</menu>

@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/appBar"
+        app:elevation="0dp">
+        <com.google.android.material.appbar.MaterialToolbar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:id="@+id/toolbar"
+            app:navigationIcon="@drawable/ic_baseline_close_24"
+            app:navigationIconTint="@color/black"
+            app:contentInsetStartWithNavigation="0dp"/>
+    </com.google.android.material.appbar.AppBarLayout>
+    <com.google.android.material.textview.MaterialTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/title"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
+        android:text="@string/edit_profile"
+        android:layout_marginTop="20dp"
+        app:drawableStartCompat="@drawable/ic_baseline_local_shipping_orange"
+        app:drawableTint="@color/orange"
+        android:drawablePadding="10dp"
+        android:layout_below="@+id/appBar"
+        android:layout_centerHorizontal="true"
+        />
+<View
+    android:layout_width="match_parent"
+    android:layout_height="2dp"
+    android:id="@+id/line"
+    android:layout_below="@+id/title"
+    android:layout_marginTop="3dp"
+    android:background="@color/orange"/>
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:id="@+id/user_avatar"
+        app:placeholderImageScaleType="fitXY"
+        android:adjustViewBounds="true"
+        app:roundAsCircle="true"
+        app:actualImageScaleType="fitXY"
+        app:placeholderImage="@drawable/ic_baseline_account_circle_24"
+        android:layout_below="@+id/line"/>
+    <ImageView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/ic_baseline_edit_24"
+        android:layout_alignEnd="@+id/user_avatar"
+       android:layout_below="@+id/line"
+        android:layout_marginTop="50dp"
+        android:id="@+id/edit_avatar"
+        android:contentDescription="@string/edit_icon"/>
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="270dp"
+        android:layout_marginTop="10dp"
+        android:layout_height="80dp"
+        android:layout_below="@+id/user_avatar"
+        android:id="@+id/nameLayout"
+        app:boxBackgroundColor="@color/white"
+        app:hintTextColor="@color/orange"
+        android:hint="@string/input_your_name"
+        app:boxStrokeColor="@color/orange">
+         <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:inputType="textPersonName"
+            android:ems="10"
+            android:id="@+id/nameEdit"/>
+    </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.button.MaterialButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/user_avatar"
+        android:layout_marginTop="10dp"
+        android:layout_toEndOf="@+id/nameLayout"
+        android:layout_marginStart="10dp"
+        app:backgroundTint="@color/orange"
+        android:text="@string/save"
+        android:padding="10dp"
+        android:id="@+id/editName"/>
+    <com.google.android.material.textview.MaterialTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/grey"
+        android:text="@string/delivery_location"
+        android:id="@+id/locationView"
+        android:layout_below="@+id/nameLayout"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="10dp"/>
+    <com.google.android.material.button.MaterialButton
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        app:cornerRadius="20dp"
+        android:padding="10dp"
+        android:layout_below="@+id/locationView"
+        android:layout_marginTop="30dp"
+        android:text="@string/change_delivery_location"
+        app:backgroundTint="@color/grey"
+        android:id="@+id/editLocation"/>
+
+</RelativeLayout>
+
+
+
+
+
+
+
+
+
+
+

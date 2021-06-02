@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="grey">#383737</color>
+    <color name="orange">#FF9800</color>
+    <color name="semi_orange">#FFC107</color>
+    <color name="semi_white">#ECEBEB</color>
+    <color name="green">#4CAF50</color>
+    <color name="pink">#E91E63</color>
+    <color name="semi_pink">#F44336</color>
+    <color name="dark_orange">#FF5722</color>
+    <color name="yellow">#CDDC39</color>
+    <color name="light_grey">#E1E0E0</color>
+    <integer-array name="pullin_colors">
+        <item>@color/black</item>
+        <item>@color/orange</item>
+        <item>@color/grey</item>
+        <item>@color/semi_orange</item>
+        <item>@color/pink</item>
+        <item>@color/yellow</item>
+        <item>@color/semi_pink</item>
+        <item>@color/dark_orange</item>
+    </integer-array>
+</resources>

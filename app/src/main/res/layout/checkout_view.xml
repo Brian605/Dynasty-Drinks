@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <ImageView
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:src="@drawable/ic_baseline_close_24"
+        android:layout_alignParentEnd="true"
+        android:id="@+id/closeDialog"
+        android:layout_margin="10dp"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/m_pesa_account"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:layout_below="@+id/closeDialog"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/mpesa1"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/m_1"
+        android:padding="5dp"
+        android:textStyle="bold"
+        android:layout_below="@+id/mpesa1"
+        android:layout_alignParentStart="true"
+        android:id="@+id/mpesa2"
+        app:drawableStartCompat="@drawable/ic_baseline_arrow_forward_ios_24" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/m_2"
+        android:padding="5dp"
+        android:textStyle="bold"
+        android:layout_below="@+id/mpesa2"
+        android:layout_alignParentStart="true"
+        android:id="@+id/mpesa3"
+        app:drawableStartCompat="@drawable/ic_baseline_arrow_forward_ios_24" />
+
+    <com.google.android.material.button.MaterialButton
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        android:layout_below="@+id/mpesa3"
+        android:layout_margin="10dp"
+        android:text="@string/_0748267133"
+        android:textColor="@color/grey"
+        app:backgroundTint="#F4F2F2"/>
+</RelativeLayout>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/type_your_message_all_users_with_the_client_app_will_receive_this_message"
+        android:textColor="@color/black"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+        android:padding="5dp"
+        android:layout_margin="5dp"
+        android:id="@+id/tip"
+        app:drawableStartCompat="@drawable/ic_baseline_highlight_24"/>
+<com.google.android.material.textfield.TextInputLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+    app:boxStrokeColor="@color/black"
+    android:layout_margin="10dp"
+    android:layout_below="@+id/tip"
+    android:hint="@string/type_your_message"
+    app:counterTextColor="@color/orange"
+    app:counterEnabled="true"
+    app:counterMaxLength="1024"
+    android:id="@+id/messageHolder">
+    <com.google.android.material.textfield.TextInputEditText
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:inputType="textAutoComplete"
+        android:id="@+id/messageInput"
+        android:textColor="@color/grey"/>
+</com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.button.MaterialButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/orange"
+        app:backgroundTint="@color/grey"
+        android:text="@string/send"
+        app:icon="@drawable/ic_baseline_chat_24"
+        android:layout_below="@+id/messageHolder"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="10dp"
+        android:id="@+id/sendMessage"/>
+</RelativeLayout>

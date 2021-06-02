@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:theme="@style/Theme.LiquorStore"
+    android:layout_height="wrap_content"
+    tools:context=".admin.MainAdminActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:background="@color/white"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@drawable/bg_collapsing_toolbar"
+            android:id="@+id/toolbar"
+            app:title="@string/app_name"
+            app:titleTextColor="@color/white"
+            android:gravity="center"
+            android:layout_gravity="center_horizontal"
+            app:navigationIcon="@drawable/ic_baseline_close_white"
+            />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+
+    <ImageView
+        android:id="@+id/imageBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="200dp"
+        android:layout_marginTop="10dp"
+        android:adjustViewBounds="true"
+        android:layout_marginEnd="5dp"
+        android:layout_marginStart="5dp"
+        android:tag="Click to select an image"
+        android:tooltipText="@string/select"
+        android:src="@drawable/ic_baseline_add_to_photos_24"
+        android:scaleType="fitXY"
+        tools:ignore="ContentDescription,UnusedAttribute" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_margin="0dp"
+            android:id="@+id/textview"
+            android:text="@string/select"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:layout_centerInParent="true"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline3"/>
+        </RelativeLayout>
+<LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:fitsSystemWindows="true"
+    android:orientation="horizontal">
+
+</LinearLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+           style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            app:boxStrokeColor="@color/black"
+            android:hint="@string/drink_title"
+            android:textColorHint="@color/black"
+            app:counterMaxLength="50"
+            app:counterEnabled="true"
+            app:counterTextColor="@color/orange"
+            app:boxStrokeWidth="2dp"
+            app:hintTextColor="@color/black">
+
+        <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/titleInput"
+        android:padding="10dp"
+        android:textColor="@color/black"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:hint="@string/previous_price"
+            android:textColorHint="@color/black"
+            app:counterMaxLength="10"
+            app:counterEnabled="true"
+            app:counterTextColor="@color/orange"
+            app:boxStrokeWidth="2dp"
+            app:hintTextColor="@color/black">
+    <com.google.android.material.textfield.TextInputEditText
+        android:textColor="#0C110C"
+        android:id="@+id/prePriceInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:importantForAutofill="no"
+       />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            app:boxStrokeColor="@color/black"
+            android:textColorHint="@color/black"
+            app:counterMaxLength="10"
+            app:counterEnabled="true"
+            app:counterTextColor="@color/orange"
+            app:boxStrokeWidth="2dp"
+            app:hintTextColor="@color/black">
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/currPriceInput"
+                android:padding="10dp"
+                android:hint="@string/current_price"
+                android:inputType="number"
+                tools:ignore="Autofill"
+                app:textInputLayoutFocusedRectEnabled="true"
+               android:minLines="2"
+               />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+<com.google.android.material.button.MaterialButton
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="@string/click_to_select_category"
+    android:layout_margin="10dp"
+    android:gravity="center"
+    app:elevation="5dp"
+    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+    app:strokeColor="@color/orange"
+    android:drawableEnd="@drawable/ic_baseline_keyboard_arrow_down_24"
+    android:textColor="@color/black"
+    app:iconGravity="textEnd"
+    app:cornerRadius="10dp"
+    app:backgroundTint="@color/white"
+    app:icon="@drawable/ic_baseline_keyboard_arrow_down_24"
+    android:id="@+id/addCategory"/>
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/postBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginRight="10dp"
+        android:text="@string/post"
+        android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+        android:textColor="#fff"
+        android:textStyle="bold"
+        app:backgroundTint="@color/grey"
+        app:cornerRadius="10dp"
+        app:icon="@drawable/ic_baseline_post_add_24"
+        app:iconGravity="textStart"
+        app:iconTint="@color/orange" />
+
+    </LinearLayout>
+    </ScrollView>

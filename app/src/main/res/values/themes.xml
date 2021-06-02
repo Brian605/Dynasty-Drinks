@@ -1,0 +1,51 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.LiquorStore" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/orange</item>
+        <item name="colorPrimaryVariant">@color/orange</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/semi_orange</item>
+        <item name="colorSecondaryVariant">@color/semi_orange</item>
+        <item name="colorOnSecondary">@color/grey</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+        <item name="android:alertDialogTheme">@style/AlertDialogStyle</item>
+        <item name="android:dialogTheme">@style/AlertDialogStyle</item>
+        <!-- Customize your theme here. -->
+    </style>
+
+    <style name="SmallRatingBar" parent="Widget.AppCompat.RatingBar.Small">
+        <item name="colorControlNormal">#FFC107</item>
+        <item name="colorControlActivated">#FF5722</item>
+    </style>
+
+    <style name="Theme.LiquorStore.FullScreenDialog" parent="Theme.MaterialComponents.Light.Dialog">
+        <item name="android:windowIsFloating">false</item>
+        <item name="android:windowBackground">@color/white</item>
+       <item name="android:statusBarColor">@color/white</item>
+    </style>
+
+    <style name="Theme.LiquorStore.Slide">
+        <item name="android:windowEnterAnimation">@anim/slide_up</item>
+        <item name="android:windowExitAnimation">@anim/slide_down</item>
+    </style>
+    <style name="AlertDialogStyle" parent="Theme.MaterialComponents.Light.Dialog.Alert">
+        <item name="android:buttonBarPositiveButtonStyle">@style/PositiveAlertButton</item>
+        <item name="android:buttonBarNegativeButtonStyle">@style/NegativeAlertButton</item>
+        <item name="colorPrimary">@color/dark_orange</item>
+        <item name="colorAccent">@color/orange</item>
+    </style>
+
+    <style name="Theme.LiquorStore.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Theme.LiquorStore.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="NegativeAlertButton" parent="Widget.MaterialComponents.Button.TextButton.Dialog">
+        <item name="android:textColor">@color/semi_orange</item>
+    </style>
+    <style name="PositiveAlertButton" parent="Widget.MaterialComponents.Button.TextButton.Dialog">
+        <item name="android:textColor">@color/dark_orange</item>
+    </style>
+</resources>

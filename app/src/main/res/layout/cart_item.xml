@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="5dp"
+    android:elevation="7dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:layout_width="60dp"
+        android:layout_height="80dp"
+        android:src="@drawable/l4"
+        android:scaleType="centerCrop"
+        android:maxHeight="90dp"
+        android:id="@+id/itemImage"
+        app:placeholderImage="@drawable/ic_menu_gallery"
+        />
+    <com.google.android.material.textview.MaterialTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/appbar_scrolling_view_behavior"
+        android:layout_toEndOf="@+id/itemImage"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
+        android:padding="5dp"
+        android:layout_marginStart="10dp"
+        android:id="@+id/itemName"/>
+    <com.google.android.material.textview.MaterialTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/ksh_29_000"
+        android:layout_below="@+id/itemName"
+        android:layout_toEndOf="@+id/itemImage"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:layout_marginStart="10dp"
+        android:id="@+id/itemPrice"
+        android:padding="5dp"/>
+    <com.google.android.material.textview.MaterialTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@+id/itemName"
+        android:text="@string/x3"
+        android:layout_margin="10dp"
+        android:id="@+id/quantity"/>
+
+</RelativeLayout>

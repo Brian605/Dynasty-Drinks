@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="3dp"
+    android:theme="@style/Theme.LiquorStore"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardBackgroundColor="@color/list_selector_bg_color"
+    app:contentPadding="3dp">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:layout_width="100dp"
+            android:layout_height="110dp"
+            app:actualImageScaleType="fitXY"
+            app:placeholderImageScaleType="fitXY"
+            app:placeholderImage="@drawable/ic_baseline_rotate_left_24"
+            android:id="@+id/itemImage"
+
+            />
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/item_title"
+            android:layout_toEndOf="@+id/itemImage"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+            android:layout_margin="10dp"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:id="@+id/offerItemTitle"/>
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/ksh_29_000"
+            android:id="@+id/itemPreviousPrice"
+            android:layout_toEndOf="@+id/itemImage"
+            android:layout_below="@+id/offerItemTitle"
+            android:textColor="@color/grey"
+            android:layout_marginStart="10dp"
+            android:textStyle="bold"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
+            />
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/ksh_29_000"
+            android:layout_toEndOf="@+id/itemImage"
+            android:id="@+id/itemCurrentPrice"
+            android:layout_below="@+id/itemPreviousPrice"
+            android:textColor="@color/orange"
+            android:textStyle="bold"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+            />
+
+
+    </RelativeLayout>
+
+</com.google.android.material.card.MaterialCardView>

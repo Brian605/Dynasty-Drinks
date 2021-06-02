@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".admin.MainAdminActivity">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_collapsing_toolbar"
+        android:paddingBottom="7dp"
+        android:id="@+id/appBar"
+        android:theme="@style/Theme.LiquorStore.AppBarOverlay">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:background="@drawable/bg_collapsing_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:popupTheme="@style/Theme.LiquorStore.PopupOverlay" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/appBar">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+           >
+            <include
+                layout="@layout/user_stats"
+                android:layout_height="350dp"
+                android:layout_width="match_parent" />
+            <include
+                layout="@layout/order_stats"
+                android:layout_height="350dp"
+                android:layout_width="match_parent" />
+            <include
+                layout="@layout/most_ordered_stats"
+                android:layout_height="350dp"
+                android:layout_width="match_parent" />
+            <include
+                layout="@layout/most_ordered_drinks_stats"
+                android:layout_height="350dp"
+                android:layout_width="match_parent" />
+
+
+        </LinearLayout>
+    </ScrollView>
+
+
+</RelativeLayout>

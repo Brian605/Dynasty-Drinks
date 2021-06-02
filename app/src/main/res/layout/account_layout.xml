@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+<com.google.android.material.appbar.AppBarLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:elevation="0dp">
+    <com.google.android.material.appbar.MaterialToolbar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:id="@+id/toolbar"
+        app:navigationIcon="@drawable/ic_baseline_close_24"
+        app:navigationIconTint="@color/black"
+        app:contentInsetStartWithNavigation="0dp"/>
+</com.google.android.material.appbar.AppBarLayout>
+    <com.google.android.material.textview.MaterialTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
+        android:text="@string/account_balance"
+        android:gravity="center_horizontal"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="30dp"
+        app:drawableStartCompat="@drawable/ic_baseline_account_balance_wallet_24"
+        app:drawableTint="@color/orange"
+        android:drawablePadding="10dp"
+        />
+    <com.google.android.material.textview.MaterialTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4"
+        android:text="@string/ksh_0"
+        android:gravity="center_horizontal"
+        android:textStyle="bold"
+        android:id="@+id/balance"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp"
+        android:drawablePadding="10dp"
+        />
+    <com.google.android.material.button.MaterialButton
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="30dp"
+        app:cornerRadius="20dp"
+        android:id="@+id/add_funds"
+        app:backgroundTint="@color/grey"
+        android:text="@string/add_funds"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="100dp"
+        android:background="@drawable/bg_round_totally_curved"/>
+</LinearLayout>

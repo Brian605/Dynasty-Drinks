@@ -1,0 +1,98 @@
+{
+  "project_info": {
+    "project_number": "223912091390",
+    "firebase_url": "https://admin-2d168.firebaseio.com",
+    "project_id": "admin-2d168",
+    "storage_bucket": "admin-2d168.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:223912091390:android:01e237f684bbc9f24e0faf",
+        "android_client_info": {
+          "package_name": "com.returno.admin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "223912091390-0575jlmefie0i9g78dvk3cbfgmu62ler.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD_LnsWLhrKuVpUg8vsmakb6P2ywjVJVoY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "223912091390-0575jlmefie0i9g78dvk3cbfgmu62ler.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:223912091390:android:d823ae21081085994e0faf",
+        "android_client_info": {
+          "package_name": "com.returno.dynasty"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "223912091390-0575jlmefie0i9g78dvk3cbfgmu62ler.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD_LnsWLhrKuVpUg8vsmakb6P2ywjVJVoY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "223912091390-0575jlmefie0i9g78dvk3cbfgmu62ler.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:223912091390:android:94f0dca556cef33f4e0faf",
+        "android_client_info": {
+          "package_name": "com.returno.foody"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "223912091390-0575jlmefie0i9g78dvk3cbfgmu62ler.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD_LnsWLhrKuVpUg8vsmakb6P2ywjVJVoY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "223912091390-0575jlmefie0i9g78dvk3cbfgmu62ler.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

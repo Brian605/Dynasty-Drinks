@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="5dp"
+    android:elevation="7dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_margin="10dp"
+            android:background="@drawable/bg_round_dark_pink"
+            android:padding="10dp"
+            android:layout_alignParentStart="true"
+            android:id="@+id/topDeals"
+            android:src="@drawable/ic_baseline_local_offer_24"
+           />
+<com.google.android.material.textview.MaterialTextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="10dp"
+    android:text="@string/top_deals"
+    android:layout_below="@+id/topDeals"
+    android:textStyle="bold"
+    android:layout_alignStart="@+id/topDeals"
+    android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"/>
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_margin="10dp"
+            android:background="@drawable/bg_round_orange"
+            android:padding="10dp"
+            android:layout_centerHorizontal="true"
+            android:id="@+id/foodFest"
+            android:src="@drawable/ic_baseline_outdoor_grill_24"
+           />
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:text="@string/food_fest"
+            android:layout_below="@+id/foodFest"
+            android:textStyle="bold"
+            android:layout_alignStart="@+id/foodFest"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"/>
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_margin="10dp"
+            android:background="@drawable/bg_round_wheat"
+            android:padding="10dp"
+            android:layout_alignParentEnd="true"
+            android:id="@+id/callToOrder"
+            android:src="@drawable/ic_baseline_call_24"
+            />
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:text="@string/call_to_order"
+            android:layout_below="@+id/callToOrder"
+            android:textStyle="bold"
+            android:layout_alignStart="@+id/callToOrder"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"/>
+
+    </RelativeLayout>
+
+
+</com.google.android.material.card.MaterialCardView>

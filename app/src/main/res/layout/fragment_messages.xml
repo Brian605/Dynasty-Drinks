@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:theme="@style/Theme.LiquorStore"
+    android:layout_height="wrap_content"
+    tools:context=".admin.MainAdminActivity">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@drawable/bg_collapsing_toolbar"
+            android:id="@+id/toolbar"
+            app:title="Messages"
+            app:titleTextColor="@color/white"
+            android:gravity="center"
+            android:layout_gravity="center_horizontal"
+            app:navigationIcon="@drawable/ic_baseline_close_white"
+            />
+
+       <androidx.recyclerview.widget.RecyclerView
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:layout_below="@+id/toolbar"
+           android:layout_margin="10dp"
+           android:id="@+id/recycler"/>
+    <com.google.android.material.button.MaterialButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="20dp"
+        app:icon="@drawable/ic_baseline_chat_24"
+        app:backgroundTint="@color/grey"
+        app:iconGravity="textEnd"
+        android:elevation="10dp"
+        android:text="@string/new_mess"
+        app:iconTint="@color/orange"
+        app:cornerRadius="20dp"
+        android:id="@+id/newMessage"/>
+    </RelativeLayout>

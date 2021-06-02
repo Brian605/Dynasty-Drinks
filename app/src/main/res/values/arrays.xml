@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="categories">
+        <item>Brandy</item>
+        <item>Whiskey</item>
+        <item>Tequila</item>
+        <item>Wine</item>
+        <item>Strawberry Wine</item>
+        <item>Vodka</item>
+        <item>Gin</item>
+        <item>Watermelon Wine</item>
+        <item>Beer</item>
+    </string-array>
+</resources>
