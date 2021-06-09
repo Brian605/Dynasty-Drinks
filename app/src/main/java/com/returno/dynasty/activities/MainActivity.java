@@ -30,6 +30,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.textview.MaterialTextView;
 import com.returno.dynasty.R;
 import com.returno.dynasty.adapters.OffersAdapter;
+import com.returno.dynasty.admin.MainAdminActivity;
 import com.returno.dynasty.admin.adapters.MessagesAdapter;
 import com.returno.dynasty.admin.listeners.SelectionListener;
 import com.returno.dynasty.admin.models.Message;
@@ -391,12 +392,16 @@ cartCounter.setText(String.valueOf(CartHelper.getCartSize()));
             startActivity(new Intent(MainActivity.this,CartActivity.class));
 
         }
+        if (item.getItemId()==R.id.admin){
+            startActivity(new Intent(MainActivity.this, MainAdminActivity.class));
+
+        }
         return super.onOptionsItemSelected(item);
     }
 
     public void setToolbar(MaterialToolbar toolbar){
         isFragment=true;
-        setSupportActionBar(toolbar);
         invalidateOptionsMenu();
+        setSupportActionBar(toolbar);
     }
 }

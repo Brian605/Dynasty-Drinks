@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+<item
+    android:title="@string/delete"
+    android:id="@+id/delete"
+    android:icon="@drawable/ic_baseline_delete_forever_24" />
+    <item
+        android:title="@string/mark_as_received"
+        android:id="@+id/markDelivered"
+        android:icon="@drawable/ic_check_white_24dp" />
+
+    <item
+        android:title="@string/mark_as_sent"
+        android:id="@+id/mark_as_sent"
+        android:icon="@drawable/ic_baseline_local_shipping_24" />
+    <item
+        android:title="@string/view_details"
+        android:id="@+id/viewDetails"
+        android:icon="@drawable/ic_baseline_local_shipping_24" />
+
+</menu>

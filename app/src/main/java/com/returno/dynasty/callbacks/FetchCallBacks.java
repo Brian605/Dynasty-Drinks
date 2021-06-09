@@ -33,6 +33,9 @@ public interface FetchCallBacks {
     default void onUserFetched(User user){
 
     }
+    default void onUserFetched(List<User> users){
+
+    }
 
     default void onStringFetched(String data){
 

@@ -15,8 +15,15 @@ public interface ClickListener {
     default void onClick(Order order){
 
     }
+    default void onClick(View view,Order order){
+
+    }
 
    default void onClick(String cashBackId){
 
    }
+
+    default void onClick(View v, String text){
+
+    }
 }

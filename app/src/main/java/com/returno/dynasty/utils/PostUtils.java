@@ -62,6 +62,26 @@ listener.onError(anError.getMessage());
                 });
     }
 
+    public synchronized void markOrderSent(String phone, String orderId, CompleteListener listener){
+        AndroidNetworking.post(Urls.EDIT_ORDERS_STATUS_URL)
+                .addBodyParameter("o_id",orderId)
+                .addBodyParameter(Constants.USER_PHONE,phone)
+                .addBodyParameter("status",Constants.STATUS_SENT)
+                .setPriority(Priority.HIGH)
+                .build()
+                .getAsString(new StringRequestListener() {
+                    @Override
+                    public void onResponse(String response) {
+                        listener.onComplete(response);
+                    }
+
+                    @Override
+                    public void onError(ANError anError) {
+                        listener.onError(anError.getMessage());
+                    }
+                });
+    }
+
     public synchronized void addAnalytics(String phone){
         AndroidNetworking.post(Urls.ADD_ANALYTICS_URL)
                 .addBodyParameter(Constants.USER_PHONE,phone)

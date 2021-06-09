@@ -20,12 +20,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.returno.dynasty.R;
-import com.returno.dynasty.adapters.CashBackAdapter;
+import com.returno.dynasty.admin.adapters.CashBackAdminAdapter;
 import com.returno.dynasty.admin.listeners.CompleteListener;
 import com.returno.dynasty.admin.utils.UploadUtils;
 import com.returno.dynasty.callbacks.ClickListener;
 import com.returno.dynasty.models.CashBack;
-import com.returno.dynasty.utils.PostUtils;
 import com.returno.dynasty.utils.UserUtils;
 
 import java.util.List;
@@ -33,7 +32,7 @@ import java.util.List;
 public class AdminCashBacksDialog extends DialogFragment {
     private MaterialToolbar toolbar;
     private RecyclerView recyclerView;
-    private CashBackAdapter adapter;
+    private CashBackAdminAdapter adapter;
     private static List<CashBack> cashBackList;
 
     public static void showDialog(FragmentManager manager, List<CashBack> cashBacks){
@@ -46,6 +45,7 @@ public class AdminCashBacksDialog extends DialogFragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setStyle(DialogFragment.STYLE_NORMAL, R.style.Theme_LiquorStore_FullScreenDialog);
+        //setHasOptionsMenu(true);
     }
 
     @Override
@@ -70,12 +70,12 @@ public class AdminCashBacksDialog extends DialogFragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-       View view=inflater.inflate(R.layout.orders_layout,container,false);
+       View view=inflater.inflate(R.layout.cashback_layout,container,false);
        toolbar=view.findViewById(R.id.toolbar);
        recyclerView =view.findViewById(R.id.listView);
        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
        recyclerView.setHasFixedSize(true);
-       adapter=new CashBackAdapter(getActivity(), cashBackList, new ClickListener() {
+       adapter=new CashBackAdminAdapter(getActivity(), cashBackList, new ClickListener() {
            @Override
            public void onClick(String cashbackId) {
                Dialog pDialog = new Dialog(getActivity());
@@ -86,7 +86,8 @@ public class AdminCashBacksDialog extends DialogFragment {
                new UploadUtils().deleteCashBack(cashbackId, new CompleteListener() {
                    @Override
                    public void onComplete() {
-                       Toast.makeText(getActivity(),"Delete",Toast.LENGTH_LONG).show();
+                       pDialog.dismiss();
+                       Toast.makeText(getActivity(),"Deleted",Toast.LENGTH_LONG).show();
 
                    }
 
@@ -118,10 +119,11 @@ public class AdminCashBacksDialog extends DialogFragment {
         recyclerView.setAdapter(adapter);
 
         if (cashBackList.isEmpty()){
+            dismiss();
             MaterialAlertDialogBuilder builder=new MaterialAlertDialogBuilder(getActivity());
             builder.setPositiveButton("Ok", (dialog, which) -> {
 dialog.dismiss();
-            }).setMessage("You have no CashBacks. Buy More Drinks to get CashBacks");
+            }).setMessage("No CashBack Requests Available");
 builder.setBackground(ContextCompat.getDrawable(getActivity(),R.drawable.bg_white_round_corner));
 Dialog dialog=builder.create();
 dialog.show();

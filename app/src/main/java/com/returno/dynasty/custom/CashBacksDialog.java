@@ -69,7 +69,7 @@ public class CashBacksDialog extends DialogFragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-       View view=inflater.inflate(R.layout.orders_layout,container,false);
+       View view=inflater.inflate(R.layout.cashback_layout,container,false);
        toolbar=view.findViewById(R.id.toolbar);
        recyclerView =view.findViewById(R.id.listView);
        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
@@ -85,6 +85,7 @@ public class CashBacksDialog extends DialogFragment {
                new PostUtils().requestCashBack(cashbackId, new CompleteListener() {
                    @Override
                    public void onComplete() {
+                       pDialog.dismiss();
                        Toast.makeText(getActivity(),"Request Submitted for Processing",Toast.LENGTH_LONG).show();
 
                    }
@@ -117,6 +118,7 @@ public class CashBacksDialog extends DialogFragment {
         recyclerView.setAdapter(adapter);
 
         if (cashBackList.isEmpty()){
+            dismiss();
             MaterialAlertDialogBuilder builder=new MaterialAlertDialogBuilder(getActivity());
             builder.setPositiveButton("Ok", (dialog, which) -> {
 dialog.dismiss();

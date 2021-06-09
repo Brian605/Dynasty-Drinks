@@ -19,6 +19,7 @@ import com.returno.dynasty.models.CashBack;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import timber.log.Timber;
 
@@ -46,7 +47,7 @@ public class CashBackAdapter extends RecyclerView.Adapter<CashBackAdapter.CashBa
     public void onBindViewHolder(@NonNull CashBackAdapter.CashBackHolder holder, int position) {
         CashBack cashBack=filterList.get(position);
        holder.cashId.setText(cashBack.getCashBackId());
-       holder.cashAmount.setText(String.valueOf(cashBack.getAmount()));
+       holder.cashAmount.setText(String.format(Locale.getDefault(),"Ksh.%d", cashBack.getAmount()));
        holder.btnRedeem.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View v) {

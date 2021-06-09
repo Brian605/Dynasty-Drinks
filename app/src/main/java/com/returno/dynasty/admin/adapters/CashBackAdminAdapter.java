@@ -1,4 +1,4 @@
-package com.returno.dynasty.adapters;
+package com.returno.dynasty.admin.adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -38,7 +38,7 @@ public class CashBackAdminAdapter extends RecyclerView.Adapter<CashBackAdminAdap
     @NonNull
     @Override
     public CashBackAdminAdapter.CashBackHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view= LayoutInflater.from(context).inflate(R.layout.cashback_item,parent,false);
+        View view= LayoutInflater.from(context).inflate(R.layout.cashback_admin_item,parent,false);
         return new CashBackHolder(view);
     }
 

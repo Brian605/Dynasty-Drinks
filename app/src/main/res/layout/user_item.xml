@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="100dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="5dp"
+    app:cardElevation="7dp"
+    app:contentPadding="5dp"
+    app:cardCornerRadius="10dp"
+
+   >
+<com.google.android.material.textview.MaterialTextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="@string/app_name"
+    android:id="@+id/nameLayout"
+    android:textColor="@color/orange"
+    android:padding="10dp"
+    android:layout_gravity="start"
+    android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+    />
+    <com.google.android.material.textview.MaterialTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/_0748267133"
+        android:id="@+id/phoneLayout"
+        android:textColor="@color/black"
+        android:padding="10dp"
+        android:layout_gravity="bottom"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+        />
+   <com.google.android.material.textview.MaterialTextView
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_gravity="end|center_vertical"
+       android:textColor="@color/white"
+       app:drawableEndCompat="@drawable/ic_baseline_more_vert_24"
+       android:id="@+id/more"
+       android:elevation="10dp"
+       android:clickable="true"
+       android:focusable="true"
+       app:cornerRadius="20dp"/>
+</com.google.android.material.card.MaterialCardView>

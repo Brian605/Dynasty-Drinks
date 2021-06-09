@@ -105,4 +105,12 @@
     <string name="redeem">Redeem</string>
     <string name="cashbacks">CashBacks</string>
     <string name="delete">Delete</string>
+    <string name="admin">Admin</string>
+    <string name="manage_users">Manage Users</string>
+    <string name="give_credo_cashback">Give Credo CashBack</string>
+    <string name="call">Call</string>
+    <string name="whatsapp">Whatsapp</string>
+    <string name="mark_as_sent">Mark As Sent</string>
+    <string name="view_details">View Details</string>
+    <string name="manage_orders">Manage Orders</string>
 </resources>

@@ -16,4 +16,10 @@
     android:title="@string/cart"
     app:showAsAction="always"
     />
+    <item
+        android:id="@+id/admin"
+        android:orderInCategory="100"
+        android:actionLayout="@layout/cart_icon"
+        android:title="@string/admin"
+        />
 </menu>

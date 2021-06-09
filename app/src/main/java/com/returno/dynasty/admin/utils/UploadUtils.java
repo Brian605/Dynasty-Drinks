@@ -364,4 +364,59 @@ listener.onError(anError.getMessage());
                     }
                 });
     }
+
+    public void deleteUser(String userId, CompleteListener listener) {
+        AndroidNetworking.post(Urls.DELETE_USER_URL)
+                .setPriority(Priority.HIGH)
+                .addBodyParameter(Constants.USER_PHONE,userId)
+                .build()
+                .getAsString(new StringRequestListener() {
+                    @Override
+                    public void onResponse(String response) {
+                        listener.onComplete();
+                    }
+
+                    @Override
+                    public void onError(ANError anError) {
+                        listener.onError(anError.getMessage());
+                    }
+                });
+    }
+
+    public void giveCashBack(String userId,String amount, CompleteListener listener) {
+        AndroidNetworking.post(Urls.GIVE_CASHBACK_URL)
+                .setPriority(Priority.HIGH)
+                .addBodyParameter(Constants.USER_PHONE,userId)
+                .addBodyParameter("amount",amount)
+                .build()
+                .getAsString(new StringRequestListener() {
+                    @Override
+                    public void onResponse(String response) {
+                        listener.onComplete();
+                    }
+
+                    @Override
+                    public void onError(ANError anError) {
+                        listener.onError(anError.getMessage());
+                    }
+                });
+    }
+
+    public void deleteOrder(String orderId, CompleteListener listener) {
+        AndroidNetworking.post(Urls.DELETE_ORDER_URL)
+                .setPriority(Priority.HIGH)
+                .addBodyParameter(Constants.ITEM_ID,orderId)
+                .build()
+                .getAsString(new StringRequestListener() {
+                    @Override
+                    public void onResponse(String response) {
+                        listener.onComplete();
+                    }
+
+                    @Override
+                    public void onError(ANError anError) {
+                        listener.onError(anError.getMessage());
+                    }
+                });
+    }
 }

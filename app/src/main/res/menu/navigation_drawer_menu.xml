@@ -29,4 +29,12 @@
         android:id="@+id/cashbacks"
         android:icon="@drawable/ic_baseline_mobile_screen_share_24"
         android:title="@string/cashbacks"/>
+    <item
+        android:id="@+id/nav_users"
+        android:icon="@drawable/ic_baseline_account_circle_24"
+        android:title="@string/manage_users"/>
+    <item
+        android:id="@+id/nav_orders"
+        android:icon="@drawable/ic_baseline_local_shipping_orange"
+        android:title="@string/manage_orders"/>
 </menu>

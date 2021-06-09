@@ -32,5 +32,9 @@ public interface Urls {
     String GET_USER_CASHBACK_URL = BASE_URL + "get_user_cashbacks.php";
     String REQUEST_CASHBACK_URL = BASE_URL + "add_cashback_request.php";
     String GET_ALL_CASHBACK_URL = BASE_URL + "get_requested_cashbacks.php";
-    String DELETE_CASHBACK_URL = BASE_URL + "delete_request.php";
+    String DELETE_CASHBACK_URL = BASE_URL + "delete_cashback.php";
+    String DELETE_USER_URL = BASE_URL + "delete_user.php";
+    String GIVE_CASHBACK_URL = BASE_URL + "give_credo_cashback.php";
+    String GET_ALL_ORDERS_URL = BASE_URL + "get_all_orders.php";
+    String DELETE_ORDER_URL = BASE_URL + "delete_order.php";
 }

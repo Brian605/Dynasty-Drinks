@@ -5,7 +5,6 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.Menu;
-import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -28,6 +27,7 @@ import com.github.mikephil.charting.utils.ColorTemplate;
 import com.google.android.material.navigation.NavigationView;
 import com.returno.dynasty.R;
 import com.returno.dynasty.admin.listeners.AnalyticsListener;
+import com.returno.dynasty.admin.models.User;
 import com.returno.dynasty.admin.ui.AddDrinksFragment;
 import com.returno.dynasty.admin.ui.AddOffersFragment;
 import com.returno.dynasty.admin.ui.DeleteDrinksFragment;
@@ -36,7 +36,10 @@ import com.returno.dynasty.admin.ui.MessagesFragment;
 import com.returno.dynasty.admin.utils.FetchUtils;
 import com.returno.dynasty.callbacks.FetchCallBacks;
 import com.returno.dynasty.custom.AdminCashBacksDialog;
+import com.returno.dynasty.custom.AdminOrdersDialog;
+import com.returno.dynasty.custom.ManageUsersDialog;
 import com.returno.dynasty.models.CashBack;
+import com.returno.dynasty.models.Order;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -53,20 +56,20 @@ public class MainAdminActivity extends AppCompatActivity {
     private DrawerLayout navigationDrawer;
     private NavigationView navigationView;
     private Toolbar toolbar;
-    private BarChart userStatsView, orderStatsView;PieChart mostOrderedStatsView,mostOrderedDrinksView;
-    private ProgressBar progressBar;
+    private BarChart userStatsView,orderByDayView;PieChart mostOrderedCategsView,mostOrderedDrinksView;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_admin);
         toolbar = findViewById(R.id.toolbar);
-        orderStatsView=findViewById(R.id.orderStats);
-        mostOrderedStatsView=findViewById(R.id.mostOrdered);
+        mostOrderedCategsView =findViewById(R.id.mostOrdered);
         mostOrderedDrinksView=findViewById(R.id.drinksStats);
         navigationDrawer=findViewById(R.id.drawer_layout);
         navigationView=findViewById(R.id.nav_view);
         userStatsView=findViewById(R.id.userStats);
+        orderByDayView=findViewById(R.id.orderStats);
 
         setSupportActionBar(toolbar);
         setupNavigationDrawer();
@@ -89,9 +92,11 @@ public class MainAdminActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onAnalytics(HashMap<String, Integer> usersMap, HashMap<String, Integer> categoryMap, HashMap<String, Integer> dayCategoryMap) {
+            public void onAnalytics(HashMap<String, Integer> usersMap, HashMap<String, Integer> categoryMap, HashMap<String, Integer> dayCategoryMap, HashMap<String, Integer> drinksMap) {
 pDialog.dismiss();
 
+
+//users by day
                 List<BarEntry> usageDaysEntry=new ArrayList<>();
                 List<String> labels=new ArrayList<>();
                 int index=0;
@@ -125,46 +130,46 @@ pDialog.dismiss();
                 userStatsView.invalidate();
 
 
-                //orders in the last 5 days chat
-                List<BarEntry> ordersEntry=new ArrayList<>();
-                List<String> labels1=new ArrayList<>();
-                int index1=0;
+                //orders by day
+                List<BarEntry> orderDaysEntry=new ArrayList<>();
+                List<String> dayLabels=new ArrayList<>();
+                int dayIndex=0;
                 for(Map.Entry<String,Integer>maps:dayCategoryMap.entrySet()){
-                    ordersEntry.add(new BarEntry(index1,maps.getValue()));
-                    labels1.add(maps.getKey());
+                    orderDaysEntry.add(new BarEntry(dayIndex,maps.getValue()));
+                    dayLabels.add(maps.getKey());
                     Timber.e("%s Hello %s", maps.getKey(), maps.getValue());
-                    index1++;
+                    dayIndex++;
                 }
 
-                BarDataSet barDataSet1=new BarDataSet(ordersEntry,"Orders");
-                BarData data1=new BarData(barDataSet1);
-                data1.setBarWidth(0.4f);
+                BarDataSet dayDataSet=new BarDataSet(orderDaysEntry,"Orders");
+                BarData dayData=new BarData(dayDataSet);
+                dayData.setBarWidth(0.4f);
 
-                orderStatsView.setData(data1);
-                barDataSet1.setColors(ColorTemplate.COLORFUL_COLORS);
-                orderStatsView.animateY(5000);
-                XAxis axis1=orderStatsView.getXAxis();
-                axis1.setPosition(XAxis.XAxisPosition.BOTTOM);
-                axis1.setLabelCount(labels1.size());
-                ValueFormatter formatter1=new ValueFormatter() {
+                orderByDayView.setData(dayData);
+                dayDataSet.setColors(ColorTemplate.COLORFUL_COLORS);
+                orderByDayView.animateY(5000);
+                XAxis d_axis=orderByDayView.getXAxis();
+                d_axis.setPosition(XAxis.XAxisPosition.BOTTOM);
+                d_axis.setLabelCount(dayLabels.size());
+                ValueFormatter dayFormatter=new ValueFormatter() {
                     @Override
                     public String getFormattedValue(float value) {
-                        return getDay(labels1.get((int )value));
+                        return getDay(dayLabels.get((int )value));
                     }
                 };
 
-                axis1.setGranularity(1f);
-                axis1.setValueFormatter(formatter1);
-                orderStatsView.setDrawGridBackground(false);
-                orderStatsView.invalidate();
+                d_axis.setGranularity(1f);
+                d_axis.setValueFormatter(dayFormatter);
+                orderByDayView.setDrawGridBackground(false);
+                orderByDayView.invalidate();
 
 
                 //Most ordered categories
                // mostOrderedStatsView.setUsePercentValues(true);
-                mostOrderedStatsView.setDrawHoleEnabled(true);
+                mostOrderedCategsView.setDrawHoleEnabled(true);
 
                 List<PieEntry> mostOrderedEntry=new ArrayList<>();
-                for(Map.Entry<String,Integer>maps:usersMap.entrySet()){
+                for(Map.Entry<String,Integer>maps:categoryMap.entrySet()){
                     mostOrderedEntry.add(new PieEntry(maps.getValue(),getDay(maps.getKey())));
 
                 }
@@ -172,12 +177,29 @@ pDialog.dismiss();
                 PieDataSet pieDataSet=new PieDataSet(mostOrderedEntry,"Categories");
                 PieData pieData=new PieData(pieDataSet);
                 pieDataSet.setColors(ColorTemplate.COLORFUL_COLORS);
+                mostOrderedCategsView.setData(pieData);
+                mostOrderedCategsView.getDescription().setText("");
+                mostOrderedCategsView.setHoleRadius(20);
+                mostOrderedCategsView.invalidate();
+
+                //Most ordered drinks
+                // mostOrderedStatsView.setUsePercentValues(true);
+                mostOrderedDrinksView.setDrawHoleEnabled(true);
+                List<PieEntry> mostOrderedDrinksEntry=new ArrayList<>();
+                for(Map.Entry<String,Integer>maps:drinksMap.entrySet()){
+                    mostOrderedDrinksEntry.add(new PieEntry(maps.getValue(),maps.getKey()));
+
+                }
+
+                PieDataSet drinksDataSet=new PieDataSet(mostOrderedDrinksEntry,"Drinks");
+                PieData drinksData=new PieData(drinksDataSet);
+                drinksDataSet.setColors(ColorTemplate.COLORFUL_COLORS);
                 //pieData.setValueFormatter(new PercentFormatter());
 
-                mostOrderedStatsView.setData(pieData);
-                mostOrderedStatsView.getDescription().setText("");
-                mostOrderedStatsView.setHoleRadius(20);
-                mostOrderedStatsView.invalidate();
+                mostOrderedDrinksView.setData(drinksData);
+                mostOrderedDrinksView.getDescription().setText("");
+                mostOrderedDrinksView.setHoleRadius(20);
+                mostOrderedDrinksView.invalidate();
 
             }
         });
@@ -238,6 +260,7 @@ pDialog.dismiss();
                 navigationDrawer.closeDrawers();
                 return true;
             }else if (itemId == R.id.cashbacks) {
+                navigationDrawer.closeDrawers();
                 Dialog pDialog=new Dialog(MainAdminActivity.this);
                 pDialog.setContentView(R.layout.progress_dialog_transparent);
                 pDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
@@ -259,9 +282,66 @@ pDialog.dismiss();
                 });
                 return true;
             }
+            else if (itemId == R.id.nav_users) {
+               fetchUsers();
+                navigationDrawer.closeDrawers();
+                return true;
+            }
+            else if (itemId == R.id.nav_orders) {
+                fetchOrders();
+                navigationDrawer.closeDrawers();
+                return true;
+            }
             return false;
         });
          }
+
+    private void fetchOrders() {
+        Dialog pDialog=new Dialog(MainAdminActivity.this);
+        pDialog.setContentView(R.layout.progress_dialog_transparent);
+        pDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        pDialog.setCancelable(false);
+        pDialog.show();
+
+        new FetchUtils().fetchAllOrders(new FetchCallBacks() {
+            @Override
+            public void onError(String message) {
+                pDialog.dismiss();
+                Toast.makeText(getApplicationContext(),"An Error Occured",Toast.LENGTH_LONG).show();
+
+            }
+
+            @Override
+            public void onUserOrderFetched(List<Order> orders) {
+                pDialog.dismiss();
+                AdminOrdersDialog.showDialog(getSupportFragmentManager(),orders);
+            }
+        });
+    }
+
+    private void fetchUsers() {
+        Dialog pDialog=new Dialog(MainAdminActivity.this);
+        pDialog.setContentView(R.layout.progress_dialog_transparent);
+        pDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        pDialog.setCancelable(false);
+        pDialog.show();
+new FetchUtils().fetchUserDetails("0748267133", new FetchCallBacks() {
+
+    @Override
+    public void onUserFetched(List<User> users) {
+
+        pDialog.dismiss();
+        ManageUsersDialog.showDialog(getSupportFragmentManager(),users);
+    }
+
+    @Override
+    public void onError(String message) {
+        pDialog.dismiss();
+        Toast.makeText(getApplicationContext(),"An Error Occured",Toast.LENGTH_LONG).show();
+
+    }
+});
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

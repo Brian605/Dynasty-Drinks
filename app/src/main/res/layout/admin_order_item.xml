@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="5dp"
+    android:background="#887251"
+    android:layout_marginTop="10dp">
+<com.google.android.material.textview.MaterialTextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="@string/_8379"
+    android:id="@+id/orderIdView"
+    android:layout_alignParentStart="true"
+    android:textColor="@color/orange"
+    android:padding="10dp"
+    android:drawablePadding="10dp"
+    android:elevation="10dp"
+    android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
+    app:drawableStartCompat="@drawable/ic_baseline_pending_24"/>
+    <com.google.android.material.textview.MaterialTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/_0748267133"
+        android:id="@+id/phoneView"
+        android:textColor="@color/white"
+        android:padding="10dp"
+        app:drawableEndCompat="@drawable/ic_baseline_keyboard_arrow_down_24"
+        android:drawablePadding="10dp"
+        android:layout_alignParentEnd="true"
+        android:elevation="10dp"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"/>
+
+
+</RelativeLayout>

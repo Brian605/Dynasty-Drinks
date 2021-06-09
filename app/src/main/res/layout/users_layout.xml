@@ -3,8 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:background="@drawable/bg_ring_orange"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_ring_orange">
 <com.google.android.material.appbar.AppBarLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -22,11 +22,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
-        android:text="@string/credo_cashbacks"
+        android:text="@string/manage_users"
         android:gravity="center_horizontal"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="20dp"
-        app:drawableStartCompat="@drawable/ic_cashbacks"
+        app:drawableStartCompat="@drawable/ic_baseline_account_circle_big"
         app:drawableTint="@color/white"
         android:drawablePadding="10dp"
         />
@@ -38,4 +38,5 @@
         android:id="@+id/listView"
         android:divider="@color/white"
         android:dividerHeight="5dp"/>
-   </LinearLayout>
+
+</LinearLayout>

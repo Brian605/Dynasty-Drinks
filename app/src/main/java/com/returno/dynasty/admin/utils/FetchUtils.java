@@ -9,9 +9,11 @@ import com.androidnetworking.interfaces.JSONArrayRequestListener;
 import com.androidnetworking.interfaces.JSONObjectRequestListener;
 import com.returno.dynasty.admin.listeners.AnalyticsListener;
 import com.returno.dynasty.admin.models.Message;
+import com.returno.dynasty.admin.models.User;
 import com.returno.dynasty.callbacks.FetchCallBacks;
 import com.returno.dynasty.models.CashBack;
 import com.returno.dynasty.models.Offer;
+import com.returno.dynasty.models.Order;
 import com.returno.dynasty.utils.Constants;
 import com.returno.dynasty.utils.Urls;
 
@@ -28,6 +30,48 @@ import java.util.Locale;
 import timber.log.Timber;
 
 public class FetchUtils {
+    public synchronized void fetchAllOrders(FetchCallBacks callBacks){
+        AndroidNetworking.post(Urls.GET_ALL_ORDERS_URL)
+                .setPriority(Priority.HIGH)
+                .build()
+                .getAsJSONArray(new JSONArrayRequestListener() {
+                    @Override
+                    public void onResponse(JSONArray response) {
+                        Timber.e(String.valueOf(response));
+                        try {
+                            List<Order> orderList=new ArrayList<>();
+
+                            for (int i=0;i<response.length();i++){
+                                JSONObject object=response.getJSONObject(i);
+                                String orderId=object.getString(Constants.ITEM_ID);
+                                String total=object.getString("cost");
+                                String status=object.getString("status");
+                                String date=object.getString("date");
+                                String itemsPrices=object.getString("items");
+                                String items=itemsPrices.split("___")[0];
+                                String prices=itemsPrices.split("___")[1];
+                                String userId=object.getString(Constants.USER_PHONE);
+
+                                Order order=new Order(orderId,items,prices,null,status,date,Integer.parseInt(total));
+                                order.setUserId(userId);
+                                orderList.add(order);
+
+                            }
+
+                            callBacks.onUserOrderFetched(orderList);
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                            callBacks.onError(e.getMessage());
+                        }
+                    }
+
+                    @Override
+                    public void onError(ANError anError) {
+
+                    }
+                });
+    }
+
     public synchronized void getAllOffers(FetchCallBacks callBacks){
         Thread thread=new Thread(new Runnable() {
             @Override
@@ -171,7 +215,7 @@ onPostExecute(null);
     }
 
     public void fetchAnalytics(AnalyticsListener listener){
-        HashMap<String,Integer>usersMap=new HashMap<>(),categoryMap=new HashMap<>(),dayCategoryMap =new HashMap<>();
+        HashMap<String,Integer>usersMap=new HashMap<>(),categoryMap=new HashMap<>(),dayCategoryMap =new HashMap<>(),drinksMap=new HashMap<>();
 
         AndroidNetworking.get(Urls.GET_ANALYTICS_URL)
                 .setPriority(Priority.HIGH)
@@ -179,13 +223,16 @@ onPostExecute(null);
                 .getAsJSONObject(new JSONObjectRequestListener() {
                     @Override
                     public void onResponse(JSONObject response) {
+                        Timber.e(response.toString());
                           try {
                             JSONArray usersArray=response.getJSONArray("users");
                             JSONArray categsArray=response.getJSONArray("categories");
                             JSONArray dayCategsArray=response.getJSONArray("day_count");
+                              JSONArray drinksArray=response.getJSONArray("drinks_count");
 
 
-                            for (int i=0;i<usersArray.length();i++){
+
+                              for (int i=0;i<usersArray.length();i++){
                                 JSONObject object=usersArray.getJSONObject(i);
                                 String date=object.getString("time");
                                 int dateCount=object.getInt("count");
@@ -202,24 +249,33 @@ onPostExecute(null);
 
 
                             for (int i=0;i<dayCategsArray.length();i++){
-                                JSONObject object=categsArray.getJSONObject(i);
+                                JSONObject object=dayCategsArray.getJSONObject(i);
                                 String categ=object.getString("date");
                                 int categCount=object.getInt("count");
                                 dayCategoryMap.put(categ,categCount);
                             }
 
-                            listener.onAnalytics(usersMap,categoryMap,dayCategoryMap);
+                              for (int i=0;i<drinksArray.length();i++){
+                                  JSONObject object=drinksArray.getJSONObject(i);
+                                  String name=object.getString("name");
+                                  int Count=object.getInt("count");
+                                  drinksMap.put(name,Count);
+                              }
+
+                            listener.onAnalytics(usersMap,categoryMap,dayCategoryMap,drinksMap);
 
                         } catch (JSONException e) {
-                            listener.onAnalytics(usersMap,categoryMap,dayCategoryMap);
+                              e.printStackTrace();
+                            listener.onAnalytics(usersMap,categoryMap,dayCategoryMap, drinksMap);
                             listener.onError(e.getMessage());
                         }
                     }
 
                     @Override
                     public void onError(ANError anError) {
+                        Timber.e(anError);
 listener.onError("An Error Occured");
-                        listener.onAnalytics(usersMap,categoryMap,dayCategoryMap);
+                        listener.onAnalytics(usersMap,categoryMap,dayCategoryMap,drinksMap);
 
                     }
                 });
@@ -258,5 +314,41 @@ listener.onError("An Error Occured");
 
     }
 
+    public synchronized void fetchUserDetails(String phoneNumber, FetchCallBacks callBacks){
+        AndroidNetworking.post(Urls.GET_USER_DETAILS)
+                .setPriority(Priority.HIGH)
+                .addBodyParameter(Constants.USER_PHONE,phoneNumber)
+                .addBodyParameter("mode","admin")
+                .build()
+                .getAsJSONArray(new JSONArrayRequestListener() {
+                    @Override
+                    public void onResponse(JSONArray response) {
+                        try {
+                            List<User> userList=new ArrayList<>();
+
+                            for (int i=0;i<response.length();i++) {
+                                JSONObject object = response.getJSONObject(i);
+                                String name = object.getString(Constants.USER_NAME);
+                                String phone = object.getString(Constants.USER_PHONE);
+                                String location = object.getString(Constants.USER_LOCATION);
+                                String image = object.getString(Constants.IMAGE_URL);
+                                User user = new User(name, phone, location, image);
+                                userList.add(user);
+                            }
+                            callBacks.onUserFetched(userList);
+
+                        } catch (JSONException e) {
+                           // onError(new ANError(e));
+                            e.printStackTrace();
+                        }
+                    }
+
+                    @Override
+                    public void onError(ANError anError) {
+                        callBacks.onError(anError.getMessage());
+                        anError.printStackTrace();
+                    }
+                });
+    }
 
 }
