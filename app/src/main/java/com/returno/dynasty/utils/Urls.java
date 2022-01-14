@@ -1,7 +1,7 @@
 package com.returno.dynasty.utils;
 
 public interface Urls {
-    String BASE_URL="https://themarket.co.ke/dynasty/api/";
+    String BASE_URL="https://iconz.co.ke/dynasty/api/";
     String OFFERS_URL=BASE_URL+"get_offers.php";
     String OFFERS_PREVIEW_URL=BASE_URL+"get_offers_preview.php";
     String DRINKS_CATEGORY_URL = BASE_URL + "get_drinks_by_category.php";
